@@ -1,0 +1,58 @@
+
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'company-website'
+        CONTAINER_NAME = 'company-landing-page'
+        PORT = '8080'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t ${IMAGE_NAME}:latest .'
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                echo 'Deploying Company Landing Page...'
+
+                sh '''
+                    docker rm -f ${CONTAINER_NAME} || true
+
+                    docker run -d \
+                        --name ${CONTAINER_NAME} \
+                        -p ${PORT}:80 \
+                        --restart unless-stopped \
+                        ${IMAGE_NAME}:latest
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Application deployed successfully!'
+            echo 'Website: http://localhost:8080'
+        }
+
+        failure {
+            echo 'Pipeline failed. Please check Jenkins logs.'
+        }
+
+        always {
+            echo 'Jenkins pipeline execution completed.'
+        }
+    }
+}
