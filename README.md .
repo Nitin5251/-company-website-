@@ -1,0 +1,97 @@
+
+# Company Landing Page
+
+A professional and responsive company landing page
+built using HTML5 and CSS3.
+
+## Project Structure
+
+company-website/
+│
+├── index.html
+├── style.css
+├── Dockerfile
+├── Jenkinsfile
+└── README.md
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- Docker
+- Nginx
+- Jenkins
+- CI/CD Pipeline
+
+## Website Features
+
+1. Professional Navigation Bar
+2. Hero Section
+3. About Us Section
+4. Three Services Cards
+5. Why Choose Us Section
+6. Contact Section
+7. Professional Footer
+8. Responsive Design
+9. CSS Hover Effects
+
+## Run Locally
+
+1. Clone the repository:
+
+   git clone <your-repository-url>
+
+2. Navigate to the project directory:
+
+   cd company-website
+
+3. Open index.html in your browser.
+
+## Run Using Docker
+
+Build Docker image:
+
+docker build -t company-website .
+
+Run Docker container:
+
+docker run -d -p 8080:80 --name company-landing-page company-website
+
+Open in browser:
+
+http://localhost:8080
+
+## Jenkins CI/CD Setup
+
+1. Install Jenkins.
+2. Install Docker on the Jenkins agent.
+3. Ensure Jenkins has permission to execute Docker commands.
+4. Push this project to a Git repository.
+5. Create a new Pipeline job in Jenkins.
+6. Configure the Git repository.
+7. Select Pipeline script from SCM.
+8. Choose Git as SCM.
+9. Set the Script Path to Jenkinsfile.
+10. Save and click Build Now.
+
+## Deployment
+
+The Jenkins pipeline performs:
+
+1. Source code checkout.
+2. Docker image creation.
+3. Old container removal.
+4. New container deployment.
+
+Application URL:
+
+http://localhost:8080
+
+## Author
+
+Company Development Team
+
+## License
+
+This project is available for educational
+and personal use.
