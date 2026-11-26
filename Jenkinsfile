@@ -6,7 +6,7 @@ pipeline {
         DOCKERHUB_USERNAME = 'nitinpradeepnitin'
         IMAGE_NAME = 'company-website'
         CONTAINER_NAME = 'company-landing-page'
-        PORT = '8080'
+        PORT = '9090'
     }
 
     stages {
